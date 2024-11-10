@@ -1,12 +1,9 @@
 package main
 
 import (
-	"log"
 	"math"
 	"strconv"
 )
-
-//"log"
 
 func (vhc *veheicle) Start() {
 	directions := [2]bool{vhc.destionation[0] > vhc.position[0], vhc.destionation[1] > vhc.position[1]}
@@ -65,22 +62,6 @@ func (vhc *veheicle) Start() {
 				vhc.communication <- "arrived-" + strconv.Itoa(vhc.id)
 				return
 			}
-			log.Println(vhc.id, vhc.position, vhc.destionation)
 		}
 	}
-	/*
-		i := 0
-		//log.Printf("Veheicle '%d' started to drive from %d,%d", vhc.id, vhc.position[0], vhc.position[1])
-		for {
-			select {
-			case <-Ticker.C:
-				//log.Printf("Veheicle '%d' is driving currently", vhc.id)
-				i++
-				if i == 10 {
-					vhc.communication <- "arrived-" + strconv.Itoa(vhc.id)
-					return
-				}
-			}
-		}
-	*/
 }

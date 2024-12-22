@@ -72,9 +72,7 @@ func main() {
 	http.HandleFunc("/headers", headers)
 	http.HandleFunc("/ws", handleWebSocket)
 
-
 	go periodicBroadcast()
 	http.ListenAndServe(":8090", nil)
-	}
 
 }

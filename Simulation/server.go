@@ -45,6 +45,8 @@ func status(w http.ResponseWriter, req *http.Request) {
 		if name == "For" {
 			for _, h := range headers {
 				switch h {
+
+				//curl 127.0.0.1:8090/status -H "For:veheicles"
 				case "veheicles":
 					log.Println("Requested status ")
 					fmt.Fprint(w, Veheicles)

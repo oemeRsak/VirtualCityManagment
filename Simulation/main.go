@@ -5,6 +5,7 @@ import (
 	"log"
 	"math/rand/v2"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -16,6 +17,11 @@ var Veheicles []*veheicle
 
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	debug_file, _ := os.OpenFile("debug.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	brodcast_file, _ := os.OpenFile("brodcast.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	debug = log.New(debug_file, "debug:", log.LstdFlags)
+	broadcastLog = log.New(brodcast_file, "brodcast:", log.LstdFlags)
+	debug.Println("Hi")
 	Ticker = time.NewTicker(time.Millisecond * 100)
 	veheicle_number := flag.Int("veheicle_number", 5, "Number of veheicles")
 
@@ -33,6 +39,7 @@ func main() {
 	// turn them on
 	for i := 0; i < len(Veheicles); i++ {
 		v := Veheicles[i]
+		debug.Printf("Veheicle '%d' is starting to from %d, %d to %d, %d", v.id, v.position[0], v.position[1], v.destionation[0], v.destionation[1])
 		go v.Start()
 	}
 
@@ -45,7 +52,7 @@ func main() {
 			switch ms[0] {
 			// if a arrived text
 			case "arrived":
-				log.Printf("Veheicle '%s' is arrived to destionation", ms[1])
+				debug.Printf("Veheicle '%s' is arrived to destionation", ms[1])
 				vhc_id, _ := strconv.Atoi(ms[1])
 
 				// find it in list and remove

@@ -29,3 +29,4 @@ I think Python is good for it.
 [structs.go](Simulation/structs.go) Object structs
 [types.go](Simulation/types.go) Ready objects/types
 [server.go](Simulation/server.go) HTTP handling functions
+[ws.go](Simulation/ws.go) Web Socket functions

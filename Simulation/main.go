@@ -70,11 +70,11 @@ func main() {
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/status", status)
 	http.HandleFunc("/headers", headers)
+	http.HandleFunc("/ws", handleWebSocket)
 
-	//http.ListenAndServe(":8090", nil)
 
-	for { //this loop will spin, using 100% CPU (SA5002)
-		//wait wait wait
+	go periodicBroadcast()
+	http.ListenAndServe(":8090", nil)
 	}
 
 }

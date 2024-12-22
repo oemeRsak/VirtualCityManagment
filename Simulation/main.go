@@ -13,7 +13,12 @@ import (
 
 var Ticker *time.Ticker
 
-var Veheicles []*veheicle
+var (
+	Veheicles     []*veheicle
+	Veheicles_com chan string
+	debug         *log.Logger
+	broadcastLog  *log.Logger
+)
 
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)

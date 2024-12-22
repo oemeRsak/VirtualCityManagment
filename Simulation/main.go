@@ -26,8 +26,10 @@ func main() {
 	brodcast_file, _ := os.OpenFile("brodcast.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	debug = log.New(debug_file, "debug:", log.LstdFlags)
 	broadcastLog = log.New(brodcast_file, "brodcast:", log.LstdFlags)
+
 	debug.Println("Hi")
 	Ticker = time.NewTicker(time.Millisecond * 100)
+
 	veheicle_number := flag.Int("veheicle_number", 5, "Number of veheicles")
 
 	flag.Parse()

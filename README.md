@@ -1,6 +1,6 @@
 # VirtualCityManagment
 
-I just saw the control room of [Miniatur Wunderland Hamburg](https://link.com) and I want to create a virtual version of that.
+I just saw the control room of [Miniatur Wunderland Hamburg](https://miniatur-wunderland.de) and I want to create a virtual version of that.
 
 ## Technology
 

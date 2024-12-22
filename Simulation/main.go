@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"math/rand/v2"
 	"net/http"
@@ -16,13 +17,16 @@ var Veheicles []*veheicle
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	Ticker = time.NewTicker(time.Millisecond * 100)
+	veheicle_number := flag.Int("veheicle_number", 5, "Number of veheicles")
+
+	flag.Parse()
 
 	log.Println("Hello World !")
 
 	veheicles_com := make(chan string)
 
 	// create veheicle object and append to the list
-	for i := 0; i < 5; i++ {
+	for i := 0; i < *veheicle_number; i++ {
 		Veheicles = append(Veheicles, &veheicle{i, "car" + strconv.Itoa(i), veheicle_types.car, veheicle_types.car.priority, [2]int{rand.IntN(100), rand.IntN(100)}, [2]int{rand.IntN(100), rand.IntN(100)}, "0", veheicles_com})
 	}
 
